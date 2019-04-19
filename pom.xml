@@ -10,6 +10,7 @@
     <modules>
         <module>springboot</module>
         <module>common</module>
+        <module>apidemo</module>
     </modules>
     <packaging>pom</packaging>
     <name>dubbo</name>
