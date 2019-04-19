@@ -7,6 +7,10 @@
     <groupId>com.kq</groupId>
     <artifactId>dubbo</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>springboot</module>
+        <module>common</module>
+    </modules>
     <packaging>pom</packaging>
     <name>dubbo</name>
     <description>Demo project for Dubbo</description>
@@ -38,6 +42,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.alibaba.boot/dubbo-spring-boot-starter -->
         <!-- <dependency>
@@ -78,6 +87,12 @@
             <version>3.4.11</version>
         </dependency>
         <!--========================== 开启@EnableDubbo 引入jar ========================= -->
+
+        <dependency>
+            <groupId>com.kq</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
