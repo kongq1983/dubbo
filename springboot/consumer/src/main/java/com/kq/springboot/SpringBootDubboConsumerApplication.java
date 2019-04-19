@@ -22,6 +22,7 @@ public class SpringBootDubboConsumerApplication {
 	private IDemoService demoService;
 
 	public static void main(String[] args) {
+		System.setProperty("dubbo.application.logger","slf4j");
 		SpringApplication.run(SpringBootDubboConsumerApplication.class, args);
 	}
 

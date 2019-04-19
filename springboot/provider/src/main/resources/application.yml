@@ -7,10 +7,17 @@ server.port: 8090
 dubbo:
   application:
     name: provider-service-app1
+    logger: slf4j
   registry:
     address: zookeeper://127.0.0.1:2181
   consumer: 
     timeout: 3000
+  protocol:
+      name: dubbo
+      port: 20880
+  scan:
+    base-packages: com.kq.springboot
+
 
 demo:
   service:
