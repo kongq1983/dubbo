@@ -2,7 +2,9 @@ package com.kq.apidemo.provider;
 
 
 import com.kq.api.IDemoService;
+import com.kq.api.IOrderService;
 import com.kq.apidemo.service.impl.DemoServiceImpl;
+import com.kq.apidemo.service.impl.OrderServiceImpl;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;
 import org.apache.dubbo.config.RegistryConfig;
@@ -49,6 +51,20 @@ public class ApiProviderConfiguration {
 
         // 暴露及注册服务
         service.export();
+
+
+        IOrderService orderService = new OrderServiceImpl();
+        ServiceConfig<IOrderService> orderServiceConfig = new ServiceConfig<>();
+        orderServiceConfig.setApplication(application);
+        orderServiceConfig.setRegistry(registry); // 多个注册中心可以用setRegistries()
+        orderServiceConfig.setProtocol(protocol); // 多个协议可以用setProtocols()
+        orderServiceConfig.setInterface(IOrderService.class);
+        orderServiceConfig.setRef(orderService);
+        orderServiceConfig.setVersion("1.0.0");
+
+        // 暴露及注册服务
+        service.export();
+        orderServiceConfig.export();
 
         System.in.read(); // 按任意键退出
     }
