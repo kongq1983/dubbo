@@ -1,6 +1,7 @@
 package com.kq.apidemo.provider;
 
 
+import com.kq.Constants;
 import com.kq.api.IDemoService;
 import com.kq.api.IOrderService;
 import com.kq.apidemo.service.impl.DemoServiceImpl;
@@ -20,7 +21,7 @@ public class ApiProviderConfiguration {
 
     public static void main(String[] args) throws Exception {
 
-        String address = "zookeeper://127.0.0.1:2181";
+        String address = Constants.ZOOKEEPER_SERVER;
 
         // 服务实现
         IDemoService demoService = new DemoServiceImpl();

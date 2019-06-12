@@ -1,6 +1,7 @@
 package com.kq.apidemo.consumer;
 
 
+import com.kq.Constants;
 import com.kq.api.IDemoService;
 import com.kq.api.IOrderService;
 import com.kq.entity.Order;
@@ -16,7 +17,7 @@ public class ApiConsumerConfiguration {
 
 	public static void main(String[] args) {
 
-		String address = "zookeeper://127.0.0.1:2181";
+		String address = Constants.ZOOKEEPER_SERVER;
 		// 当前应用配置
 		ApplicationConfig application = new ApplicationConfig();
 		application.setName("consumer-of-helloworld-app");
