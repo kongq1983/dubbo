@@ -17,7 +17,8 @@ package com.kq.util;
 public class ByteUtil {
 	/** short2字节数组 */
 	public static byte[] short2bytes(short v) {
-		byte[] b = new byte[4];
+//		byte[] b = new byte[4];
+		byte[] b = new byte[2];
 		b[1] = (byte) v;
 		b[0] = (byte) (v >>> 8);
 		return b;
