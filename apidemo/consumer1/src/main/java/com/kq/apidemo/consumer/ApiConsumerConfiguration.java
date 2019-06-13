@@ -17,7 +17,7 @@ public class ApiConsumerConfiguration {
 
 	public static void main(String[] args) {
 
-		String address = Constants.ZOOKEEPER_SERVER;
+		String address = Constants.ZOOKEEPER_SERVER_PROTOCOL;
 		// 当前应用配置
 		ApplicationConfig application = new ApplicationConfig();
 		application.setName("consumer-of-helloworld-app");

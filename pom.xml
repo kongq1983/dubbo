@@ -11,6 +11,7 @@
         <module>springboot</module>
         <module>common</module>
         <module>apidemo</module>
+        <module>dubboclient</module>
     </modules>
     <packaging>pom</packaging>
     <name>dubbo</name>
@@ -26,6 +27,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <fastjson.version>1.2.29</fastjson.version>
     </properties>
 
     <dependencies>
@@ -106,11 +108,19 @@
         </dependency>
         <!--========================== 开启@EnableDubbo 引入jar ========================= -->
 
+        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-client -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-client</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+
         <dependency>
             <groupId>com.kq</groupId>
             <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
 
     </dependencies>
 

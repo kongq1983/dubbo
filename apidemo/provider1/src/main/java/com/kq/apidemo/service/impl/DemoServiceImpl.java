@@ -14,6 +14,7 @@ import org.apache.dubbo.config.annotation.Service;
 public class DemoServiceImpl implements IDemoService {
 
     public String getMessage(String name) {
+        System.out.println("call DemoServiceImpl param="+name);
         return "Hello, "+name;
     }
 

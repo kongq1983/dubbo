@@ -21,7 +21,7 @@ public class ApiProviderConfiguration {
 
     public static void main(String[] args) throws Exception {
 
-        String address = Constants.ZOOKEEPER_SERVER;
+        String address = Constants.ZOOKEEPER_SERVER_PROTOCOL;
 
         // 服务实现
         IDemoService demoService = new DemoServiceImpl();
