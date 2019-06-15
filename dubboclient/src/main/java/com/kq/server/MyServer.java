@@ -98,10 +98,12 @@ public class MyServer {
         channel.read(buffer); //读取数据
         buffer.flip();
 
+        buffer.mark();
         short magicShort = buffer.getShort();
         int magic = Short.toUnsignedInt(magicShort);
 
         if(magic!=MAGIC_NUMBER) {
+            buffer.reset();
             System.out.println("index="+index+" 无效的Magic数字 magicShort="+magicShort+" magic="+magic);
             return;
         }
