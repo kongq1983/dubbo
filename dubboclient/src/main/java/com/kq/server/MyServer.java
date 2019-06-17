@@ -98,35 +98,36 @@ public class MyServer {
         channel.read(buffer); //读取数据
         buffer.flip();
 
-        buffer.mark();
-        short magicShort = buffer.getShort();
-        int magic = Short.toUnsignedInt(magicShort);
+        while(true && buffer.hasRemaining()) {
+            short magicShort = buffer.getShort();
+            int magic = Short.toUnsignedInt(magicShort);
 
-        if(magic!=MAGIC_NUMBER) {
-            buffer.reset();
-            System.out.println("index="+index+" 无效的Magic数字 magicShort="+magicShort+" magic="+magic);
-            return;
-        }
+            if (magic != MAGIC_NUMBER) {
+                System.out.println("index=" + index + " 无效的Magic数字 magicShort=" + magicShort + " magic=" + magic);
+//                return;
+                break;
+            }
 
-        System.out.println("index="+index+"  magic="+magic);
+            System.out.println("index=" + index + "  magic=" + magic);
 
-        int length = buffer.getInt();
-        System.out.println("index="+index+"length="+length);
+            int length = buffer.getInt();
+            System.out.println("index=" + index + "length=" + length);
 
-        byte[] data = new byte[length];
-        buffer.get(data);
+            byte[] data = new byte[length];
+            buffer.get(data);
 
-        buffer.get(length);
+            buffer.get(length);
 
 //        byte[] bs = buffer.array();
 //        for(byte b : bs){
 //            System.out.println("接收客户字节数 b="+b);
 //        }
 
-        String request = new String(data).trim();
-        System.out.println("index="+index+" 客户端请求:" + request);
-        ByteBuffer outBuffer = ByteBuffer.wrap("请求收到".getBytes());
-        channel.write(outBuffer); //将消息会送给客户端
+            String request = new String(data).trim();
+            System.out.println("index=" + index + " 客户端请求:" + request);
+            ByteBuffer outBuffer = ByteBuffer.wrap("请求收到".getBytes());
+            channel.write(outBuffer); //将消息会送给客户端
+        }
 
 
     }

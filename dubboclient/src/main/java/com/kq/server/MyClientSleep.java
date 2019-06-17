@@ -9,11 +9,11 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * MyClient
- * 发送不休息
+ * 每次发送 休息200ms
  * @author kq
  * @date 2019-06-13
  */
-public class MyClient {
+public class MyClientSleep {
 
     public static void main(String[] args) throws Exception{
         send("localhost",8300);
@@ -27,48 +27,6 @@ public class MyClient {
 
         dubboClient.write(ByteBuffer.wrap("start".getBytes()));
 
-//        String bodyStr = getBody();
-//
-//        byte[] body = bodyStr.getBytes();
-//
-//        // 发送数据 - header段
-//        byte[] header = new byte[16];
-
-
-
-
-
-
-//        System.arraycopy(magicArray, 0, header, 0, 2);
-//        // 标志：请求/响应， 以及body数据的序列化方式
-//        header[2] = (byte) 0xC6;
-//        // 响应状态码
-//        header[3] = 0x00;
-//        // messageId(8B)，每次请求的唯一ID
-//        byte[] messageId = ByteUtil.long2bytes(1);
-//        System.arraycopy(messageId, 0, header, 4, 8);
-//        // bodyLength(4B)，后面的内容长度
-//        byte[] bodyLength = ByteUtil.int2bytes(body.length);
-//        System.arraycopy(bodyLength, 0, header, 12, 4);
-//
-//        // 拼装请求报文
-//        byte[] request = new byte[body.length + header.length];
-//        System.arraycopy(header, 0, request, 0, header.length);
-//        System.arraycopy(body, 0, request, 16, body.length);
-//
-//
-//        boolean isOpen = dubboClient.isOpen();      // 测试SocketChannel是否为open状态
-//        boolean isConnected = dubboClient.isConnected();    //测试SocketChannel是否已经被连接
-//        boolean isConnectionPending = dubboClient.isConnectionPending();    //测试SocketChannel是否正在进行连接
-//        boolean finishConnect = dubboClient.finishConnect();    //校验正在进行套接字连接的SocketChannel是否已经完成连接
-//
-//        System.out.println("isOpen="+isOpen);
-//        System.out.println("isConnected="+isConnected);
-//        System.out.println("isConnectionPending="+isConnectionPending);
-//        System.out.println("finishConnect="+finishConnect);
-
-
-
 
         ByteBuffer response = ByteBuffer.allocate(1025);
         System.out.println("start response length="+response.position());
@@ -79,7 +37,7 @@ public class MyClient {
 
         for(int i=1;i<=100;i++) {
             byte[] array = getSendBytes(i);
-//            Thread.sleep(100);
+            Thread.sleep(100);
             dubboClient.write(ByteBuffer.wrap(array));
             dubboClient.socket().getOutputStream().flush();
         }
